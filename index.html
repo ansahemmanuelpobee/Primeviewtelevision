@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping</title>
+
+  
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial,  sans-serif;
+        padding: 0;
+      }
+
+      a{
+        text-decoration: none;
+        color: inherit;
+      }
+      /* Nvabar */
+      .navbar {
+        background:rgb(122, 122, 170);
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .navbar-top {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 1rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: black;
+      }
+
+      .brand img {
+        height: 200px;
+        width: 200px;
+        margin-right: 0.5rem;
+      
+      }
+
+      .cart {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.5rem 0.75rem;
+        border: 20px;
+        font-weight: 600;
+      }
+      .cart:hover {
+        background: black;
+      }
+
+      .cart-count {
+        min-width: 1.2rem;
+        height: 1.2rem;
+        display: inline-grid;
+        place-items: center;
+        font-size: 0.75rem;
+        background: black;
+        color: rgb(150, 178, 121);
+        border-radius: 999px;
+        padding: 0 0.25rem;
+      }
+
+      .hamburger {
+        display: none;
+        font-size: 1,5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 8px;
+      }
+
+      .hamburger:hover {
+        background: rgb(141, 190, 224);
+      }
+
+      /* desktop nav */
+      .nav-links {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0.5rem 1rem;
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav-list {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-link {
+        color: #666;
+        padding: 0.5rem 0.75rem;
+        border-radius: 6px;
+      }
+
+      .nav-link:hover {
+        background: #6e7892;
+        color: black;
+      }
+      .nav-link:hover{
+         color: black;
+         font-weight: 600;
+         border-bottom: 3px solid black;
+      }
+
+      /* search bar */
+      .navbar-search {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0.5rem 1rem;
+        display: flex;
+        justify-content: center;
+        border-color: blue;
+
+      }
+
+      .search {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+
+      }
+      .search-input {
+        flex: 1;
+        padding: 0.6rem 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 20px 00 20px;
+        outline: none;
+        font-size: 1rem;
+      }
+
+      .search-input:focus {
+        border-radius: rgb(15, 15, 118);
+        box-shadow: 1rem;
+      }
+
+      .search-btn {
+        padding: 0.6rem 1rem;
+        border: none;
+        border-radius: 0 20px 20px 0;
+        background: black;
+        color: rgb(223, 191, 191);
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      .search-btn:hover {
+        filter: brightness(1.1);
+
+      }
+
+      /* mobile phone drop down */
+      .dropdown {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        border-top: 1px solid white;
+        padding: 1.5rem 1rem;
+        border-radius: 0% 0 8px 8px;
+      }
+
+      .dropdown a {
+        padding: 0.5rem 0;
+        color: #666;
+      }
+
+      .dropdown a:hover {
+        background: white;
+        color: black;
+      }
+
+      /* Responsive */
+      @media(max-width:768px) {
+        .hamburger{
+          display: block;
+        }
+      
+      .navbar-links {
+        display: none;
+      }
+
+      /* hide desktop nav */
+      .dropdown.show {
+        display: flex;
+      }
+      
+      .search {
+        max-width: 100%;
+
+      }
+      .search-input{
+        font-size: 0.95rem;
+      }
+      .search-btn {
+        font-size: 0.95rem;
+        padding: 0.4rem 0.6rem;
+      }
+      
+      .cart {
+        font-size: 0.95rem;
+        padding: 0.4rem 0.6rem;
+      }
+     
+}
+
+    @media(max-width: 480px) {
+         .search-input {
+          font-size: 0.9rem;
+          padding: 0.5rem 0.6rem;
+         }
+
+         .search-btn {
+          font-size: 0.9rem;
+          padding: 0.45rem 0.7rem;
+         }
+         .cart {
+          font-size: 0.9rem;
+          padding: 0.35rem 0.35rem;
+         }
+         .brand img {
+          height: 34px;
+         }
+    }
+
+    /* Main Section */
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    #Home {
+      background: #f9f9f9;
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+
+    #Home h5 {
+      color: blue;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      line-height: 6px;
+      font-weight: 800;
+
+   }
+
+   .Home h1 span {
+    color: red;
+   }
+   #Home p {
+    font-size: 1rem;
+    color: #4b5563;
+    margin: 1rem auto;
+    max-width: 720px;
+   }
+   .shop-now{
+    display: inline-block;
+    background: black;
+    color: white;
+    border-radius: 28px;
+    padding: 1% 1.6rem;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(17, 17, 17, 0.13);
+    transition: transform .15 ease, box-shadow .15s ease;
+
+   }
+
+   .shop-now:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(17, 17, 17, 0.14);
+  }
+
+  /* sliding images */
+  #shop {
+    padding: 2rem 1rem 1rem;
+    background-color: white;
+  }
+  #shop h2 {
+    text-align: center;
+    padding: 2rem 2rem;
+  }
+  
+  .slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+  }
+  .slider-container {
+    position: relative;
+
+  }
+
+  .nav-btn {
+    border: none;
+    background: black;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 60;
+  }
+  .nav-btn.left {
+    left: 0.5rem;
+  }
+  .nav-btn.right {
+    right: 0.5rem;
+  }
+  .slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-card {
+    flex: 0 0 auto;
+    width: 220px;
+    border-radius: 10px;
+    padding: .9rem;
+    text-align: center;
+    background: white;
+    border: 1px solid rgb(120, 119, 104);
+    box-shadow: 0 6px 18px  rgb(122, 122, 170);
+    transition: transform .18s ease, box-shadow .18s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  .product-card img {
+    max-width: 100%;
+    height: 140px;
+    object-fit: cover;
+    margin-bottom: 0.6rem;
+    border-radius: 6px;
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px  rgb(122, 122, 170);
+
+
+  }
+
+  /* product showcase */
+  .product-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 0.7rem 1rem 1.25rem 1rem;
+    background:#fff;
+     }
+
+    
+.item-card {
+    background: white;
+    border: 1px solid rgb(7, 6, 6);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    gap: 0.5 rem;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.item-card img {
+   width: 100%;
+   height: 150;
+   object-fit: cover;
+   margin-bottom: 0.5rem;
+   transition: 0.3s ease, 0.3s ease;
+}
+.item-card:hover img {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px  rgb(122, 122, 170);
+}
+
+
+
+
+
+
+
+
+
+
+      
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<header class="navbar">
+    <div class="navbar-top">
+      <a class="brand" href="index.html"><img src="/img/image.png" alt="PRIMEVIEW"> </a>
+    <div style="display:flex; align-items: center; gap: 1rem;">
+      
+      <div class="navbar-links">
+        <form class="search" action="#" role="search">
+          <input class="search-input" type="search" placeholder="search-products" aria-label="search">
+          <button class="search-btn" type="submit">search</button>
+        </form>
+      </div>
+      <!-- desktop navbar -->
+      <div class="navbar-links">
+        <ul class="nav-list">
+          <li><a class="navbar-link active" href="index.html">Home</a></li>
+          <li> <a class="navbar-link" href="shop.html">Shop</a></li>
+          <li> <a class="navbar-link" href="About.html">About</a></li>
+          <li> <a class="navbar-link" href="Login.html">Contact</a></li>
+          <li> <a class="navbar-link" href="Login.html">Login</a></li>
+        </ul>
+      </div>
+
+      
+      <div class="hamburger" onclick="toggleMenu()">&#9776</div>
+
+
+      <!-- mobile dropdown hamburger -->
+       <div class="dropdown" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="About.html">About</a>
+        <a href="Login.html">Contact</a>
+        <a href="Login.html">Login</a>
+
+       </div>
+
+      </div>
+
+</div>
+
+</header>
+
+
+<main>
+  <section id="Home">
+    <div class="container">
+      <h5 style="color: black;">NEW PRIMEVIEW DROPS!</h5>
+      <h1><span style="color: rgb(122, 122, 170);">Fresh styles, smart deals,</span> and unbeatable value</h1>
+    <p> Smarter deals, better prices, everyday comfort <span style="color: cyan;">PrimeView</span></p>
+    <a class="shop-now" role="button" href="shop.html">shop now</a>
+    </div>
+   
+
+  </section>
+
+<!-- Featured Products -->
+<section id="shop">
+  <h2 style="background-color:  rgb(122, 122, 170);">FIRST CLASS</h2>
+<div class="slider-container">
+  <button class="nav-btn left" type="button" aria-label="scroll left" onclick="scrollSlider(-1)">&#10094;</button>
+
+<div class="slider" id="productSlider">
+  <div class="product-card">
+    <img src="img/(𝟏 𝐈𝐭𝐞𝐦 - 𝟏 𝐨𝐫𝐝𝐞𝐫)_- Please check out….jpg" alt="Hisense Tv 32">
+    <h4>Hisense Tv 32</h4>
+    <p>&#8373; 2,300</p>
+  </div>
+
+   <div class="product-card">
+    <img src="img/Buy TCL 85” Class S Class 4K UHD HDR LED Smart TV….jpg" alt="TCL 85” Class S Class 4K UHD HDR LED Smart TV">
+    <h4> TCL 85” Class S Class 4K UHD HDR LED Smart TV</h4>
+    <p>&#8373; 5,700</p>
+  </div>
+
+   <div class="product-card">
+    <img src="img/DESCRIPTION With 20,000 local dimming zones, and….jpg" alt="TCL Quick MIni-LED TV">
+    <h4>TCL Quick MIni-LED TV</h4>
+    <p>&#8373; 5,000</p>
+  </div>
+
+   <div class="product-card">
+    <img src="img/Discover why the TCL V4C QLED 32 Inch Google TV….jpg" alt="TCL V4C QLED 32 Inch Google TV">
+    <h4>TCL V4C QLED 32 Inch Google TV</h4>
+    <p>&#8373; 1,300</p>
+  </div>
+
+   <div class="product-card">
+    <img src="img/HISENSE 32A4NTUK 32 Smart HD Ready LED TV.jpg" alt="HISENSE 32 A4NTUK Smart HD Ready LED TV">
+    <h4>HISENSE 32 A4NTUK Smart HD Ready LED TV</h4>
+    <p>&#8373; 2,300</p>
+  </div>
+  
+
+   <div class="product-card">
+    <img src="img/Publicidad televisor FLEETWOOD, 1960_.jpg" alt="FLEETWOOD, 1960">
+    <h4>FLEETWOOD, 1960 Television</h4>
+    <p>&#8373; 2,500</p>
+  </div>
+
+  <div class="product-card">
+    <img src="img/Hisense Smart TV.jpg" alt="Hisense Smart TV">
+    <h4>Hisense Smart TV</h4>
+    <p>&#8373; 1,500</p>
+  </div>
+
+   <div class="product-card">
+    <img src="img/Hisense 50H7GB for sale online _ eBay.jpg" alt="Hisense 50H7GB Smart TV">
+    <h4>Hisense 50H7GB Smart TV</h4>
+    <p>&#8373; 2,500</p>
+  </div>
+
+   
+
+
+</div>
+
+
+<button class="nav-btn right" type="button" aria-label="scroll right" onclick="scrollSlider(1)">&#10095</button>
+
+
+
+
+</div>
+</section>
+
+<!-- items -->
+
+<section id="products">
+  <h2 style="padding: 2rem 2rem; text-align: center; background-color:rgb(122, 122, 170);">Products</h2>
+  <div>
+    <div class="product-grid">
+  <div class="item-card">
+    <img src="img/vintage tv set - 1.jpg" alt="Vintage TV Set">
+    <h4>Vintage TV Set</h4>
+    <p>&#8373;<span style="color: red;">2,300</span> </p>
+    <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop</span></h5></a>
+  </div>
+
+   <div class="item-card">
+    <img src="img/Title_ Hisense 55-Inch Class U8 Series Mini-LED….jpg" alt="Hisense 55-Inch Class U8 Series Mini-LED TV">
+    <h4>Hisense 55-Inch Class U8 Series Mini-LED TV</h4>
+    <p>&#8373; <span style=" color: red;">5,700</span></p>
+     <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop </span></h5></a>
+  </div>
+
+   <div class="item-card">
+    <img src="img/TCL S4K Series combines slim contemporary design….jpg" alt="TCL S4K Series Smart TV">
+    <h4>TCL S4K Series Smart TV</h4>
+    <p>&#8373; <span style="color: red;">3,500</span></p>
+     <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop</span></h5></a>
+  </div>
+  
+
+   <div class="item-card">
+    <img src="img/TCL PF650K Fire TV Series with Freely combines 4K….jpg" alt="TCL PF650K Fire TV Series Smart TV">
+    <h4>TCL PF650K Fire TV Series Smart TV</h4>
+    <p>&#8373; <span style="color: red;">1,300</span></p>
+     <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop </span></h5></a>
+  </div>
+  
+
+   <div class="item-card">
+    <img src="img/TCL C841K 55-inch Television, Mini LED, HDR 2000….jpg" alt="TCL C841K 55-inch Television, Mini LED, HDR 2000">
+    <h4>TCL C841K 55-inch Television, Mini LED, HDR 2000</h4>
+    <p>&#8373; <span style="color: red;">3,500</span></p>
+     <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop </span></h5></a>
+  </div>
+  
+  
+
+   <div class="item-card">
+    <img src="img/TCL 98 Inch Class QM8K Series _ Mini LED QLED 4K….jpg" alt="TCL 98 Inch Class QM8K Series _ Mini LED QLED 4K TV">
+    <h4>TCL 98 Inch Class QM8K Series _ Mini LED QLED 4K TV</h4>
+    <p>&#8373; <span style="color: red;">5,000</span></p>
+     <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop </span></h5></a>
+  </div>
+
+  <div class="item-card">
+    <img src="img/TCL 32S5209K TV- 32-Inch TV Smart HD Television….jpg" alt="TCL 32S5209K TV- 32-Inch TV Smart HD Television">
+    <h4>TCL 32S5209K TV- 32-Inch TV Smart HD Television</h4>
+    <p>&#8373; <span style="color: red;">3,500</span></p>
+     <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop </span></h5></a>
+  </div>
+
+  <div class="item-card">
+    <img src="img/TCL 32S5209K TV- 32-Inch TV Smart HD Television….jpg" alt="TCL 32S5209K TV- 32-Inch TV Smart HD Television">
+    <h4>TCL 32S5209K TV- 32-Inch TV Smart HD Television</h4>
+    <p>&#8373; <span style="color: red;">2,500</span></p>
+     <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop</span></h5></a>
+  </div>
+
+  
+  <div class="item-card">
+    <img src="img/Hisense 43 Inch Tv Prices In Ghana Hisense is a….jpg" alt="Hisense 43 Inch Tv">
+    <h4>Hisense 43 Inch TV</h4>
+    <p>&#8373; <span style="color: red;">2,000</span></p>
+     <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop </span></h5></a>
+  </div>
+
+  
+  <div class="item-card">
+    <img src="img/Supersonic Sc-1310tv.jpg" alt="Supersonic Sc-1310tv">
+    <h4>2in1 Supersonic Sc-1310tv</h4> 
+    <p>&#8373; <span style="color: red;">2,500</span></p>
+     <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop </span></h5></a>
+  </div>
+
+  
+  <div class="item-card">
+    <img src="img/TCL PF650K Fire TV Series with Freely combines 4K….jpg" alt="TCL PF650K Fire TV Series with Freely combines 4K UHD Smart TV">
+    <h4>TCL PF650K Fire TV Series with Freely combines 4K UHD Smart TV</h4>
+    <p>&#8373; <span style="color: red;">2,020</span></p>
+     <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop </span></h5></a>
+  </div>
+
+  
+  <div class="item-card">
+    <img src="img/Buy TCL 85” Class S Class 4K UHD HDR LED Smart TV….jpg" alt="TCL 85” Class S Class 4K UHD HDR LED Smart TV">
+    <h4>TCL 85” Class S Class 4K UHD HDR LED Smart TV</h4>
+    <p>&#8373; <span style="color: red;">2,100</span></p>
+    <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop </span></h5></a>
+  </div>
+
+  
+  <div class="item-card">
+    <img src="img/Hisense 43 Inch Tv Prices In Ghana Hisense is a….jpg" alt="Hisense 43 Inch Tv">
+    <h4>Hisense 43 Inch TV</h4>
+    <p>&#8373; <span style="color: red;">2,000</span></p>
+     <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop </span></h5></a>
+  </div>
+
+  
+  <div class="item-card">
+    <img src="img/Hisense Smart TV.jpg" alt="Hisense Smart TV">
+    <h4>Hisense Smart TV</h4>
+    <p>&#8373; <span style="color: red;">2,700</span></p>
+     <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop </span></h5></a>
+  </div>
+
+  
+  <div class="item-card">
+    <img src="img/HISENSE 32A4NTUK 32 Smart HD Ready LED TV.jpg" alt="Hisense 32A4NTUK 32 Smart HD Ready LED TV">
+    <h4>Hisense 32A4NTUK 32 Smart HD Ready LED TV</h4>
+    <p>&#8373; <span style="color: red;">1,500</span></p>
+     <br>
+    <a href="shop.html"><h5"> <span style="background:  rgb(122, 122, 170); color: white; border-radius: 30px; padding: 5px 8px;">shop </span></h5></a>
+  </div>
+
+  
+ 
+
+  </div>
+</section>
+
+
+
+
+</main>
+
+
+
+<script>
+  (function(){
+    const slider = document.getElementById('productSlider');
+    window.scrollSlider = function(direction){
+    if(!slider) return;
+    const card = slider .querySelector('.product-card');
+    const gap = 16;
+    const scrollAmount = card ? (card.clientWidth + gap) :  300;
+    slider.scrollBy({left: direction * scrollAmount, behavior: 'smooth'});
+    };
+
+
+  })();
+
+  
+</script>
+
+
+
+
+<script>
+  // Hamburger toggler
+
+
+  function toggleMenu(){
+    const menu = document.getElementById('mobileMenu');
+    const btn  = document.querySelector('.hamburger');
+    const isOpen = menu.classList.toggle('show');
+    if (btn) btn.setAttribute('aria-expanded', isOpen);
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+</body>
+
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-section">
+      <h3>PRIMEVIEW</h3>
+      <p>Quality Televisions for modern homes, with affordable prices.</p>
+</div>
+
+<div class="footer-section">
+  <h4>Customer Care</h4>
+  <ul>
+    <li><a class="navbar-link active" href="#">Help center</a></li>
+          <li> <a class="navbar-link" href="#">Contact Us</a></li>
+          <li> <a class="navbar-link" href="#">Delivery & Returns</a></li>
+
+  </ul>
+
+</div>
+
+ <div class="footer-section">
+  <h4>Our Links</h4>
+  <ul>
+    <li><a class="navbar-link active" href="index.html">How to Buy</a></li>
+    <li> <a class="navbar-link" href="shop.html">Service Center</a></li>
+    <li> <a class="navbar-link" href="#">Report a Product</a></li>
+  </ul>
+
+ 
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy;2026 PRIMEVIEW. All rights reserverd.</p>
+    <p>Payment method  : <img src="#" alt=""></p>
+    <p>Follow Us On :</p>
+    
+  </div>
+
+
+</footer>
+<style>
+  .footer {
+    background-color: rgb(122, 122, 170);
+    border: solid;
+    padding: 12px 12px;
+  
+  }
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+</style>
+
+
+
+
+</html>
+
